@@ -75,7 +75,7 @@ nav {
     bottom: 0;
     height: 100%;
     left: 0;
-    background: lightblue;
+    background: $nav-background;
     width: 65px;
     overflow: hidden;
     transition: width 0.2s linear;
@@ -98,14 +98,15 @@ nav {
         top: 13px;
     }
 }
-a,
-RouterLink {
+a {
     position: relative;
-    color: rgb(85, 83, 83);
+    color: $nav-color;
     font-size: 20px;
     display: table;
     width: 200px;
-    padding: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    transition: all 0.3s ease;
 }
 .icon {
     position: relative;
@@ -118,10 +119,10 @@ RouterLink {
 .nav-item {
     position: relative;
     top: 0px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 a:hover {
-    background: #eee;
+    background: rgba(255, 255, 0, 0.5);
 }
 nav:hover {
     width: 200px;
