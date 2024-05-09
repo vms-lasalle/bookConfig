@@ -2,6 +2,7 @@
 
 <template>
     <div>
+        <h1>Login</h1>
         <form>
             <div>
                 <label for="email">Email</label>
