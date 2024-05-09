@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from 'vue-router'
+</script>
 
 <template>
     <nav>
@@ -10,16 +12,16 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <routerLink to="/">
                     <i class="fa-solid fa-home"></i>
                     <span class="nav-item">Home</span>
-                </a>
+                </routerLink>
             </li>
             <li>
-                <a href="#">
+                <routerLink to="/users">
                     <i class="fa-solid fa-user"></i>
                     <span class="nav-item">Usuarios</span>
-                </a>
+                </routerLink>
             </li>
             <li>
                 <a href="#">
@@ -87,7 +89,8 @@ nav {
     font-size: 20px;
     text-transform: uppercase;
 }
-a {
+a,
+RouterLink {
     position: relative;
     color: rgb(85, 83, 83);
     font-size: 20px;
