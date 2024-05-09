@@ -3,5 +3,5 @@ import SidebarNav from '../components/SidebarNav.vue'
 </script>
 
 <template>
-    <sidebarNav />
+    <SidebarNav />
 </template>
