@@ -12,10 +12,10 @@ import LogoutIcon from 'vue-material-design-icons/Logout.vue'
     <nav>
         <ul>
             <li>
-                <a href="#" class="logo">
+                <div class="logo">
                     <img src="/images/logo.png" alt="" />
                     <span class="nav-item">NCABook</span>
-                </a>
+                </div>
             </li>
             <li>
                 <routerLink to="/">
@@ -30,22 +30,22 @@ import LogoutIcon from 'vue-material-design-icons/Logout.vue'
                 </routerLink>
             </li>
             <li>
-                <a href="#">
+                <routerLink to="/stages">
                     <school-icon :size="45" class="icon" />
                     <span class="nav-item">Etapas</span>
-                </a>
+                </routerLink>
             </li>
             <li>
-                <a href="#">
+                <routerLink to="/subjects">
                     <book-open-variant-icon :size="45" class="icon" />
                     <span class="nav-item">Materias</span>
-                </a>
+                </routerLink>
             </li>
             <li>
-                <a href="#">
+                <routerLink to="/languages">
                     <translate-icon :size="45" class="icon" />
                     <span class="nav-item">Idiomas</span>
-                </a>
+                </routerLink>
             </li>
             <li>
                 <a href="#" class="logout">
@@ -82,9 +82,12 @@ nav {
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
 }
 .logo {
+    position: relative;
     text-align: center;
     display: flex;
-    transition: all 0.5s ease;
+    width: 200px;
+    padding-left: 10px;
+    transition: all 0.3s ease;
     img {
         width: 50px;
         height: 50px;

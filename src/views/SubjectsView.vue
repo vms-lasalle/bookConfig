@@ -6,7 +6,7 @@ import SidebarNav from '../components/SidebarNav.vue'
     <SidebarNav />
     <main>
         <div class="about">
-            <h1>This is the Users page</h1>
+            <h1>This is the Subjects page</h1>
         </div>
     </main>
 </template>
