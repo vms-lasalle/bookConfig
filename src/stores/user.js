@@ -12,20 +12,20 @@ export const useUserStore = defineStore('user', () => {
     const apiUrl = computed(() => this.apiHost + ':' + this.apiPort + '/')
 
     async function login(email, password) {
-        axios
-            .post(this.apiUrl + 'api/auth/login', {
+        try {
+            let response = await axios.post(this.apiUrl + 'api/auth/login', {
                 identifier: email,
                 password: password
             })
-            .then((response) => {
-                console.log('login correct')
-                user.value = response.data.user
-                token.value = response.data.jwt
-                error.value = null
-            })
-            .catch((e) => {
-                error.value = 'An error ocurred: ' + e.response
-            })
+            console.log('login correct')
+            user.value = response.data.user
+            token.value = response.data.jwt
+            error.value = null
+            return true
+        } catch (e) {
+            error.value = 'An error ocurred: ' + e.response
+        }
+        return false
     }
 
     return { user, token, error, apiHost, apiPort, apiUrl, login }
