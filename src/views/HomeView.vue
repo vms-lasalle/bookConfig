@@ -1,5 +1,18 @@
 <script setup>
 import SidebarNav from '../components/SidebarNav.vue'
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { onBeforeMount } from 'vue'
+
+const userStore = useUserStore()
+const router = useRouter()
+const { userMail } = storeToRefs(userStore)
+onBeforeMount(() => {
+    if (userMail.value === null) {
+        router.push('/login')
+    }
+})
 </script>
 
 <template>
