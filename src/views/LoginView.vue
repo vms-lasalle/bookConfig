@@ -24,6 +24,9 @@
     place-items: center;
     margin: auto;
     form {
+        h1 {
+            text-align: center;
+        }
         display: flex;
         flex-direction: column;
         gap: 20px;
