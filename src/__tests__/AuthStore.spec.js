@@ -1,9 +1,6 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useUserStore } from '@/stores/user'
-import { describe, it, expect, beforeEach, vi } from 'vitest'
-import axios from 'axios'
-
-vi.mock('axios')
+import { useAuthStore } from '@/stores/AuthStore'
+import { describe, it, expect, beforeEach } from 'vitest'
 
 describe('User Store', () => {
     beforeEach(() => {
@@ -11,7 +8,7 @@ describe('User Store', () => {
     })
 
     it('should have an API URL', () => {
-        const userStore = useUserStore()
+        const userStore = useAuthStore()
         expect(userStore.apiUrl).toEqual('http://slimphp.local:8888/')
     })
 

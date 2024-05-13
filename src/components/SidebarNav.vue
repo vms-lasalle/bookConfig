@@ -6,6 +6,13 @@ import SchoolIcon from 'vue-material-design-icons/School.vue'
 import BookOpenVariantIcon from 'vue-material-design-icons/BookOpenVariant.vue'
 import TranslateIcon from 'vue-material-design-icons/Translate.vue'
 import LogoutIcon from 'vue-material-design-icons/Logout.vue'
+import { useAuthStore } from '@/stores/AuthStore'
+
+const authStore = useAuthStore()
+
+const onLogout = () => {
+    authStore.logout()
+}
 </script>
 
 <template>
@@ -14,45 +21,48 @@ import LogoutIcon from 'vue-material-design-icons/Logout.vue'
             <li>
                 <div class="logo">
                     <img src="/images/logo.png" alt="" />
-                    <span class="nav-item">NCABook</span>
+                    &nbsp;
+                    <span class="nav-title">NCABook</span>
                 </div>
             </li>
-            <li>
-                <routerLink to="/">
-                    <home-icon :size="45" class="icon" />
-                    <span class="nav-item">Home</span>
-                </routerLink>
-            </li>
-            <li>
-                <routerLink to="/users">
-                    <account-icon :size="45" class="icon" />
-                    <span class="nav-item">Usuarios</span>
-                </routerLink>
-            </li>
-            <li>
-                <routerLink to="/stages">
-                    <school-icon :size="45" class="icon" />
-                    <span class="nav-item">Etapas</span>
-                </routerLink>
-            </li>
-            <li>
-                <routerLink to="/subjects">
-                    <book-open-variant-icon :size="45" class="icon" />
-                    <span class="nav-item">Materias</span>
-                </routerLink>
-            </li>
-            <li>
-                <routerLink to="/languages">
-                    <translate-icon :size="45" class="icon" />
-                    <span class="nav-item">Idiomas</span>
-                </routerLink>
-            </li>
-            <li>
-                <a href="#" class="logout">
-                    <logout-icon :size="45" class="icon" />
-                    <span class="nav-item">Salir</span>
-                </a>
-            </li>
+            <div v-if="authStore.user.token">
+                <li>
+                    <routerLink to="/">
+                        <home-icon :size="45" class="icon" />
+                        <span class="nav-item">Home</span>
+                    </routerLink>
+                </li>
+                <li>
+                    <routerLink to="/users">
+                        <account-icon :size="45" class="icon" />
+                        <span class="nav-item">Usuarios</span>
+                    </routerLink>
+                </li>
+                <li>
+                    <routerLink to="/stages">
+                        <school-icon :size="45" class="icon" />
+                        <span class="nav-item">Etapas</span>
+                    </routerLink>
+                </li>
+                <li>
+                    <routerLink to="/subjects">
+                        <book-open-variant-icon :size="45" class="icon" />
+                        <span class="nav-item">Materias</span>
+                    </routerLink>
+                </li>
+                <li>
+                    <routerLink to="/languages">
+                        <translate-icon :size="45" class="icon" />
+                        <span class="nav-item">Idiomas</span>
+                    </routerLink>
+                </li>
+                <li>
+                    <button class="logout" @click.prevent="onLogout">
+                        <logout-icon :size="45" class="icon" />
+                        <span class="nav-item">Salir</span>
+                    </button>
+                </li>
+            </div>
         </ul>
     </nav>
 </template>
@@ -89,6 +99,13 @@ nav {
     .nav-item {
         top: 13px;
     }
+    .nav-title {
+        display: inline-block;
+        margin-top: 13px;
+        text-align: center;
+        color: $nav-color;
+        font-size: 22px;
+    }
     .icon {
         position: relative;
         width: 50px;
@@ -114,6 +131,19 @@ nav {
     }
     a:hover {
         background: rgba(255, 255, 0, 0.5);
+    }
+    button {
+        position: relative;
+        color: $nav-color;
+        text-align: left;
+        font-size: 20px;
+        display: table;
+        width: 200px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        transition: all 0.3s ease;
+        background: none;
+        border: none;
     }
     .logout {
         position: absolute;

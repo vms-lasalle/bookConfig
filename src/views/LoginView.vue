@@ -1,16 +1,33 @@
-<script setup></script>
+<script setup>
+import SidebarNav from '../components/SidebarNav.vue'
+
+import { reactive } from 'vue'
+import { useAuthStore } from '@/stores/AuthStore'
+
+const authStore = useAuthStore()
+
+const credentials = reactive({
+    email: '',
+    password: ''
+})
+
+const onSubmit = () => {
+    authStore.login(credentials)
+}
+</script>
 
 <template>
+    <SidebarNav />
     <div class="loginform">
-        <form>
+        <form @submit.prevent="onSubmit">
             <h1>Login</h1>
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" required />
+                <input type="email" id="email" v-model="credentials.email" required />
             </div>
             <div>
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" required />
+                <input type="password" id="password" v-model="credentials.password" required />
             </div>
             <button type="submit">Iniciar sesión</button>
         </form>
