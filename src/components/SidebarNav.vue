@@ -58,17 +58,6 @@ import LogoutIcon from 'vue-material-design-icons/Logout.vue'
 </template>
 
 <style lang="scss">
-* {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-family: 'IndivisaSans', sans-serif;
-}
-body {
-    background: $back-color;
-}
 nav {
     position: absolute;
     top: 0;
@@ -80,14 +69,14 @@ nav {
     overflow: hidden;
     transition: width 0.2s linear;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
-}
-.logo {
-    position: relative;
-    text-align: center;
-    display: flex;
-    width: 200px;
-    padding-left: 10px;
-    transition: all 0.3s ease;
+    .logo {
+        position: relative;
+        text-align: center;
+        display: flex;
+        width: 200px;
+        padding-left: 10px;
+        transition: all 0.3s ease;
+    }
     img {
         width: 50px;
         height: 50px;
@@ -100,39 +89,39 @@ nav {
     .nav-item {
         top: 13px;
     }
-}
-a {
-    position: relative;
-    color: $nav-color;
-    font-size: 20px;
-    display: table;
-    width: 200px;
-    padding-left: 10px;
-    padding-bottom: 20px;
-    transition: all 0.3s ease;
-}
-.icon {
-    position: relative;
-    width: 50px;
-    height: 40px;
-    top: 16px;
-    font-size: 20px;
-    text-align: center;
-}
-.nav-item {
-    position: relative;
-    top: 0px;
-    margin-left: 15px;
-}
-a:hover {
-    background: rgba(255, 255, 0, 0.5);
+    .icon {
+        position: relative;
+        width: 50px;
+        height: 40px;
+        top: 16px;
+        font-size: 20px;
+        text-align: center;
+    }
+    .nav-item {
+        position: relative;
+        top: 0px;
+        margin-left: 15px;
+    }
+    a {
+        position: relative;
+        color: $nav-color;
+        font-size: 20px;
+        display: table;
+        width: 200px;
+        padding-left: 10px;
+        padding-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+    a:hover {
+        background: rgba(255, 255, 0, 0.5);
+    }
+    .logout {
+        position: absolute;
+        bottom: 0px;
+    }
 }
 nav:hover {
     width: 200px;
     transition: all 0.5s ease;
-}
-.logout {
-    position: absolute;
-    bottom: 0px;
 }
 </style>

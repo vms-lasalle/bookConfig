@@ -1,9 +1,9 @@
 <script setup></script>
 
 <template>
-    <div>
-        <h1>Login</h1>
+    <div class="loginform">
         <form>
+            <h1>Login</h1>
             <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" required />
@@ -17,4 +17,36 @@
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.loginform {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    margin: auto;
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            label {
+                font-size: 1.2rem;
+            }
+            input {
+                padding: 10px;
+                font-size: 1.2rem;
+            }
+        }
+        button {
+            padding: 10px;
+            font-size: 1.2rem;
+            background: $access-color;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+</style>
