@@ -1,8 +1,14 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from '@/stores/AuthStore'
+
+const authStore = useAuthStore()
+</script>
 
 <template>
     <div class="about">
-        <h1>Home Page</h1>
+        <h1>Bienvenido</h1>
+        <hr />
+        <p>{{ authStore.user.email }}</p>
     </div>
 </template>
 
