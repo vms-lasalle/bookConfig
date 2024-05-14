@@ -6,11 +6,11 @@ import router from '@/router'
 export const useAuthStore = defineStore('authStore', () => {
     const user = ref({})
     const error = ref(null)
-    const apiUrl = 'http://slimphp.local:8888/'
+    const apiUrl = 'http://slimphp.local:8888'
 
     const login = (credentials) => {
         axios
-            .post(apiUrl + 'api/auth/login', {
+            .post(apiUrl + '/api/auth/login', {
                 identifier: credentials.email,
                 password: credentials.password
             })
