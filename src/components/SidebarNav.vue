@@ -27,31 +27,31 @@ const onLogout = () => {
             </li>
             <div v-if="authStore.user.token">
                 <li>
-                    <routerLink to="/">
+                    <routerLink :to="{ name: 'home' }">
                         <home-icon :size="45" class="icon" />
                         <span class="nav-item">Home</span>
                     </routerLink>
                 </li>
                 <li>
-                    <routerLink to="/users">
+                    <routerLink :to="{ name: 'users' }">
                         <account-icon :size="45" class="icon" />
                         <span class="nav-item">Usuarios</span>
                     </routerLink>
                 </li>
                 <li>
-                    <routerLink to="/stages">
+                    <routerLink :to="{ name: 'stages' }">
                         <school-icon :size="45" class="icon" />
                         <span class="nav-item">Etapas</span>
                     </routerLink>
                 </li>
                 <li>
-                    <routerLink to="/subjects">
+                    <routerLink :to="{ name: 'subjects' }">
                         <book-open-variant-icon :size="45" class="icon" />
                         <span class="nav-item">Materias</span>
                     </routerLink>
                 </li>
                 <li>
-                    <routerLink to="/languages">
+                    <routerLink :to="{ name: 'languages' }">
                         <translate-icon :size="45" class="icon" />
                         <span class="nav-item">Idiomas</span>
                     </routerLink>
