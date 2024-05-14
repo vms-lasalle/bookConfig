@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import { useAuthStore } from '@/stores/AuthStore'
 
 const routes = [
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/LoginView.vue')
+    },
     {
         path: '/',
         name: 'home',
@@ -28,15 +34,29 @@ const routes = [
         component: () => import('@/views/LanguagesView.vue')
     },
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('@/views/LoginView.vue')
+        path: '/:pathMatch(.*)*',
+        name: 'notfound',
+        component: () => import('@/views/NotFound.vue')
     }
 ]
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to) => {
+    const authStore = useAuthStore()
+
+    const isAuthenticated = authStore.user.token ? true : false
+
+    if (isAuthenticated && to.name === 'login') {
+        return { name: 'home', query: to.query, hash: to.hash }
+    }
+
+    if (!isAuthenticated && to.name !== 'login') {
+        return { name: 'login' }
+    }
 })
 
 export default router
