@@ -1,19 +1,9 @@
-<script setup>
-import SidebarNav from '../components/SidebarNav.vue'
-</script>
+<script setup></script>
 
 <template>
-    <SidebarNav />
-    <main>
-        <div class="about">
-            <h1>This is the Users page</h1>
-        </div>
-    </main>
+    <div class="about">
+        <h1>This is the Users page</h1>
+    </div>
 </template>
 
-<style>
-main {
-    margin-left: 100px;
-    padding: 20px;
-}
-</style>
+<style lang="scss" scoped></style>

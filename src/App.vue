@@ -1,9 +1,13 @@
 <script setup>
+import SidebarNav from '@/components/SidebarNav.vue'
 import { RouterView } from 'vue-router'
 </script>
 
 <template>
-    <RouterView />
+    <SidebarNav />
+    <main>
+        <RouterView />
+    </main>
 </template>
 
 <style lang="scss">
@@ -17,5 +21,9 @@ import { RouterView } from 'vue-router'
 }
 body {
     background: $back-color;
+}
+main {
+    margin-left: 100px;
+    padding: 20px;
 }
 </style>

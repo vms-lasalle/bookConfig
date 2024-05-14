@@ -1,6 +1,4 @@
 <script setup>
-import SidebarNav from '../components/SidebarNav.vue'
-
 import { reactive } from 'vue'
 import { useAuthStore } from '@/stores/AuthStore'
 
@@ -17,7 +15,6 @@ const onSubmit = () => {
 </script>
 
 <template>
-    <SidebarNav />
     <div class="loginform">
         <form @submit.prevent="onSubmit">
             <h1>Login</h1>
@@ -34,7 +31,7 @@ const onSubmit = () => {
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .loginform {
     display: flex;
     justify-content: center;
