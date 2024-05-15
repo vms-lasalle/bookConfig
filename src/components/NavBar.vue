@@ -53,10 +53,10 @@ const onLogout = () => {
                     </routerLink>
                 </li>
                 <li>
-                    <button @click.prevent="onLogout">
+                    <a href="" @click.prevent="onLogout">
                         <logout-icon :size="40" class="icon" />
                         <span class="nav-item">Salir</span>
-                    </button>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -72,7 +72,6 @@ header {
     height: 70px;
     padding: 5px 5%;
     .logo {
-        cursor: pointer;
         img {
             height: 60px;
             width: auto;
@@ -105,15 +104,6 @@ header {
                     transition: all 0.3s ease;
                 }
                 a:hover {
-                    background-color: rgba(255, 255, 0, 0.5);
-                }
-                button {
-                    background-color: $nav-background;
-                    display: inline-block;
-                    color: $nav-color;
-                    transition: all 0.3s ease;
-                }
-                button:hover {
                     background-color: rgba(255, 255, 0, 0.5);
                 }
             }
