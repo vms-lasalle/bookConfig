@@ -76,6 +76,7 @@ header {
         img {
             height: 60px;
             width: auto;
+            border-radius: 50%;
             transition: all 0.3s ease;
         }
         img:hover {
