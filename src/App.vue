@@ -23,7 +23,7 @@ html {
     font-size: 20px;
 }
 body {
-    background: $back-color;
+    background: url('./styles/images/lasallebg.jpg') no-repeat center center fixed;
 }
 main {
     padding: 20px 5%;
