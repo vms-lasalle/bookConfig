@@ -17,7 +17,7 @@ const onSubmit = () => {
 <template>
     <div class="loginform">
         <form @submit.prevent="onSubmit">
-            <h1>Login</h1>
+            <h1>Entrar</h1>
             <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" v-model="credentials.email" required />
@@ -37,9 +37,17 @@ const onSubmit = () => {
     justify-content: center;
     place-items: center;
     margin: auto;
+    width: 40vw;
+    padding: 40px 5%;
+    background-color: #fff5;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0.4rem 0.8rem #0005;
+    border-radius: 0.8rem;
+
     form {
         h1 {
             text-align: center;
+            font-size: 1.5rem;
         }
         display: flex;
         flex-direction: column;
@@ -49,11 +57,11 @@ const onSubmit = () => {
             flex-direction: column;
             gap: 5px;
             label {
-                font-size: 1.2rem;
+                font-size: 0.9rem;
             }
             input {
-                padding: 10px;
-                font-size: 1.2rem;
+                padding: 5px;
+                font-size: 1rem;
             }
         }
         button {
