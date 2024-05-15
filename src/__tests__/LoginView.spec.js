@@ -10,6 +10,6 @@ describe('LoginView', () => {
 
     it('LoginView renders properly', () => {
         const wrapper = mount(LoginView)
-        expect(wrapper.text()).toContain('Login')
+        expect(wrapper.text()).toContain('Entrar')
     })
 })
