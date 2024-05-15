@@ -1,10 +1,10 @@
 <script setup>
-import SidebarNav from '@/components/SidebarNav.vue'
+import NavBar from '@/components/NavBar.vue'
 import { RouterView } from 'vue-router'
 </script>
 
 <template>
-    <SidebarNav />
+    <NavBar />
     <main>
         <RouterView />
     </main>
@@ -19,11 +19,13 @@ import { RouterView } from 'vue-router'
     box-sizing: border-box;
     font-family: 'IndivisaSans', sans-serif;
 }
+html {
+    font-size: 20px;
+}
 body {
     background: $back-color;
 }
 main {
-    margin-left: 100px;
-    padding: 20px;
+    padding: 20px 5%;
 }
 </style>
