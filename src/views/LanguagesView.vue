@@ -8,13 +8,15 @@ const authStore = useAuthStore()
 const languages = ref([])
 
 const getLanguages = async () => {
-    const response = await axios.get(authStore.apiUrl + '/api/languages', {
-        headers: {
-            Authorization: 'Bearer ' + authStore.user.token
-        }
-    })
-    languages.value = response.data
-    console.log(languages.value)
+    axios
+        .get(authStore.apiUrl + '/api/languages', {
+            headers: {
+                Authorization: 'Bearer ' + authStore.user.token
+            }
+        })
+        .then((response) => {
+            languages.value = response.data
+        })
 }
 
 const editLanguage = (id) => {
@@ -23,10 +25,25 @@ const editLanguage = (id) => {
 
 const deleteLanguage = (id) => {
     console.log('delete language', id)
+    if (confirm('¿Estás seguro de borrar este idioma?')) {
+        axios
+            .delete(authStore.apiUrl + '/api/languages/' + id, {
+                headers: {
+                    Authorization: 'Bearer ' + authStore.user.token
+                }
+            })
+            .then((response) => {
+                console.log(response.data)
+                getLanguages()
+            })
+            .catch((error) => {
+                console.log(error)
+                alert('No se pudo borrar el idioma porque está siendo usado.')
+            })
+    }
 }
 
 onMounted(() => {
-    console.log('LanguagesView mounted')
     getLanguages()
 })
 </script>
