@@ -58,6 +58,7 @@ const saveLanguage = () => {
                 }
             })
             .then((response) => {
+                console.log(response.data)
                 getLanguages()
                 editActive.value = !editActive.value
             })
@@ -73,6 +74,7 @@ const saveLanguage = () => {
                 }
             })
             .then((response) => {
+                console.log(response.data)
                 getLanguages()
                 editActive.value = !editActive.value
             })
@@ -92,6 +94,7 @@ const deleteLanguage = (id) => {
                 }
             })
             .then((response) => {
+                console.log(response.data)
                 getLanguages()
             })
             .catch((error) => {
