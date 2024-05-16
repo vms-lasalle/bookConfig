@@ -2,10 +2,18 @@
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/AuthStore'
 import axios from 'axios'
+import editIcon from 'vue-material-design-icons/Pencil.vue'
+import cancelIcon from 'vue-material-design-icons/Close.vue'
+import addIcon from 'vue-material-design-icons/Plus.vue'
+import saveIcon from 'vue-material-design-icons/Check.vue'
 
 const authStore = useAuthStore()
 
 const languages = ref([])
+const editActive = ref(false)
+const newLanguageId = ref(0)
+const newLanguageName = ref('')
+const newLanguageCode = ref('')
 
 const getLanguages = async () => {
     axios
@@ -20,11 +28,65 @@ const getLanguages = async () => {
 }
 
 const editLanguage = (id) => {
-    console.log('edit language', id)
+    if (id !== 0) {
+        const language = languages.value.find((language) => language.id === id)
+        newLanguageId.value = language.id
+        newLanguageName.value = language.language
+        newLanguageCode.value = language.code
+    } else {
+        newLanguageId.value = 0
+        newLanguageName.value = ''
+        newLanguageCode.value = ''
+    }
+    editActive.value = !editActive.value
+}
+
+const cancelEdit = () => {
+    editActive.value = !editActive.value
+}
+
+const saveLanguage = () => {
+    console.log('save language')
+    const language = {
+        language: newLanguageName.value,
+        code: newLanguageCode.value
+    }
+    if (newLanguageId.value === 0) {
+        axios
+            .post(authStore.apiUrl + '/api/languages', language, {
+                headers: {
+                    Authorization: 'Bearer ' + authStore.user.token
+                }
+            })
+            .then((response) => {
+                console.log(response.data)
+                getLanguages()
+                editActive.value = !editActive.value
+            })
+            .catch((error) => {
+                console.log(error)
+                alert('No se pudo crear el idioma.')
+            })
+    } else {
+        axios
+            .put(authStore.apiUrl + '/api/languages/' + newLanguageId.value, language, {
+                headers: {
+                    Authorization: 'Bearer ' + authStore.user.token
+                }
+            })
+            .then((response) => {
+                console.log(response.data)
+                getLanguages()
+                editActive.value = !editActive.value
+            })
+            .catch((error) => {
+                console.log(error)
+                alert('No se pudo guardar el idioma.')
+            })
+    }
 }
 
 const deleteLanguage = (id) => {
-    console.log('delete language', id)
     if (confirm('¿Estás seguro de borrar este idioma?')) {
         axios
             .delete(authStore.apiUrl + '/api/languages/' + id, {
@@ -52,6 +114,27 @@ onMounted(() => {
     <div class="table">
         <section class="table_header">
             <h1>Idiomas disponibles</h1>
+            <button @click="editLanguage(0)" class="new">
+                <add-icon :size="15" class="icon" />
+            </button>
+        </section>
+        <section class="new_entry" v-if="editActive">
+            <label
+                >Idioma:
+                <input type="text" id="language" v-model="newLanguageName" />
+            </label>
+            <label
+                >Código:
+                <input type="text" id="code" v-model="newLanguageCode" />
+            </label>
+            <div>
+                <button @click.prevent="saveLanguage" class="success">
+                    <save-icon :size="15" class="icon" /></button
+                >&nbsp;
+                <button @click.prevent="cancelEdit" class="danger">
+                    <cancel-icon :size="15" class="icon" />
+                </button>
+            </div>
         </section>
         <section class="table_body">
             <table>
@@ -69,9 +152,13 @@ onMounted(() => {
                         <td>{{ language.language }}</td>
                         <td>{{ language.code }}</td>
                         <td>
-                            <!-- <router-link :to="{ name: 'edit-language', params: { id: language.id } }">Edit</router-link> -->
-                            <button @click="editLanguage(language.id)">editar</button>
-                            <button @click="deleteLanguage(language.id)">borrar</button>
+                            <button @click="editLanguage(language.id)" class="success">
+                                <edit-icon :size="15" class="icon" />
+                            </button>
+                            &nbsp;
+                            <button @click="deleteLanguage(language.id)" class="danger">
+                                <cancel-icon :size="15" class="icon" />
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,69 +167,4 @@ onMounted(() => {
     </div>
 </template>
 
-<style lang="scss" scoped>
-.table {
-    margin: auto;
-    width: 80vw;
-    height: 80vh;
-    padding: 10px 5%;
-    background-color: #fff5;
-
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0.4rem 0.8rem #0005;
-    border-radius: 0.8rem;
-
-    overflow: hidden;
-
-    .table_header {
-        width: 100%;
-        height: 10%;
-        background-color: #fff4;
-        padding: 0.8rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .table_body {
-        width: 95%;
-        max-height: calc(89% - 1.6rem);
-        background-color: #fffb;
-        margin: 0.8rem auto;
-        border-radius: 0.6rem;
-        overflow: auto;
-        overflow: overlay;
-    }
-    .table_body::-webkit-scrollbar {
-        width: 0.5rem;
-        height: 0.5rem;
-    }
-    .table_body::-webkit-scrollbar-thumb {
-        background-color: #0004;
-        border-radius: 0.5rem;
-        visibility: hidden;
-    }
-    .table_body:hover::-webkit-scrollbar-thumb {
-        visibility: visible;
-    }
-    table {
-        width: 100%;
-    }
-    table,
-    th,
-    td {
-        border-collapse: collapse;
-        padding: 0.2rem 1rem;
-        text-align: center;
-    }
-    thead th {
-        position: sticky;
-        top: 0;
-        left: 0;
-        background-color: #d5d1defe;
-        text-transform: capitalize;
-    }
-    tbody tr:nth-child(even) {
-        background-color: #00f2;
-    }
-}
-</style>
+<style lang="scss" scoped></style>
