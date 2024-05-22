@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router'
 import HomeIcon from 'vue-material-design-icons/Home.vue'
 import AccountIcon from 'vue-material-design-icons/Account.vue'
+import AccountKeyIcon from 'vue-material-design-icons/AccountKey.vue'
 import SchoolIcon from 'vue-material-design-icons/School.vue'
 import BookOpenVariantIcon from 'vue-material-design-icons/BookOpenVariant.vue'
 import TranslateIcon from 'vue-material-design-icons/Translate.vue'
@@ -32,6 +33,12 @@ const onLogout = () => {
                     <routerLink :to="{ name: 'users' }">
                         <account-icon :size="40" class="icon" />
                         <span class="nav-item">Usuarios</span>
+                    </routerLink>
+                </li>
+                <li>
+                    <routerLink :to="{ name: 'roles' }">
+                        <account-key-icon :size="40" class="icon" />
+                        <span class="nav-item">Roles</span>
                     </routerLink>
                 </li>
                 <li>
