@@ -3,11 +3,14 @@
 Esta app es un proyecto que complementa al módulo libro NCA. Permite ajustar parámetros internos del backend como:
 
 -   Gestión de usuarios.
--   Configuración de idiomas.
+-   Gestión de roles.
 -   Configuración de niveles educativos.
 -   Configuración de materias.
+-   Configuración de idiomas.
 
 ## Cómo usar el código
+
+pendiente de redacción
 
 ### Project Setup
 
