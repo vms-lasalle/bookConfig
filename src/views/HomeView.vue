@@ -1,9 +1,15 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import { useAuthStore } from '@/stores/AuthStore'
+
+const authStore = useAuthStore()
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <div class="about">
+        <h1>Bienvenido</h1>
+        <hr />
+        <p>{{ authStore.user.email }}</p>
+    </div>
 </template>
+
+<style lang="scss" scoped></style>
