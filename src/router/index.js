@@ -4,42 +4,42 @@ import { useAuthStore } from '@/stores/AuthStore'
 
 const routes = [
     {
-        path: '/login',
+        path: '/backendconfig/login',
         name: 'login',
         component: () => import('@/views/LoginView.vue')
     },
     {
-        path: '/',
+        path: '/backendconfig/',
         name: 'home',
         component: HomeView
     },
     {
-        path: '/users',
+        path: '/backendconfig/users',
         name: 'users',
         component: () => import('@/views/UsersView.vue')
     },
     {
-        path: '/roles',
+        path: '/backendconfig/roles',
         name: 'roles',
         component: () => import('@/views/RolesView.vue')
     },
     {
-        path: '/stages',
+        path: '/backendconfig/stages',
         name: 'stages',
         component: () => import('@/views/StagesView.vue')
     },
     {
-        path: '/subjects',
+        path: '/backendconfig/subjects',
         name: 'subjects',
         component: () => import('@/views/SubjectsView.vue')
     },
     {
-        path: '/languages',
+        path: '/backendconfig/languages',
         name: 'languages',
         component: () => import('@/views/LanguagesView.vue')
     },
     {
-        path: '/:pathMatch(.*)*',
+        path: '/backendconfig/:pathMatch(.*)*',
         name: 'notfound',
         component: () => import('@/views/NotFound.vue')
     }
