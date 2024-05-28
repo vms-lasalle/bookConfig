@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: '/backendconfig/',
     plugins: [vue()],
     resolve: {
         alias: {
@@ -18,5 +19,8 @@ export default defineConfig({
                     '@import "@/styles/_variables.scss";@import "@/styles/_tipography.scss";@import "@/styles/_forms.scss";'
             }
         }
+    },
+    build: {
+        outDir: 'backendconfig'
     }
 })
