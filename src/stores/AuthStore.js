@@ -7,6 +7,7 @@ export const useAuthStore = defineStore('authStore', () => {
     const user = ref({})
     const error = ref(null)
     const apiUrl = 'http://slimphp.local:8888'
+    // const apiUrl = 'http://utilesnca.vetorius.ovh:1337'
 
     const login = (credentials) => {
         axios
