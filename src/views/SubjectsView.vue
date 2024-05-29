@@ -50,7 +50,8 @@ const saveSubject = () => {
         axios
             .post(authStore.apiUrl + '/api/subjects', subject, {
                 headers: {
-                    Authorization: 'Bearer ' + authStore.user.token
+                    Authorization: 'Bearer ' + authStore.user.token,
+                    'Access-Control-Allow-Origin': '*'
                 }
             })
             .then((response) => {
@@ -66,7 +67,8 @@ const saveSubject = () => {
         axios
             .put(authStore.apiUrl + '/api/subjects/' + newSubjectId.value, subject, {
                 headers: {
-                    Authorization: 'Bearer ' + authStore.user.token
+                    Authorization: 'Bearer ' + authStore.user.token,
+                    'Access-Control-Allow-Origin': '*'
                 }
             })
             .then((response) => {
