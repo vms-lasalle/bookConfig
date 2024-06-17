@@ -9,7 +9,7 @@ describe('User Store', () => {
 
     it('should have an API URL', () => {
         const userStore = useAuthStore()
-        expect(userStore.apiUrl).toEqual('http://slimphp.local:8888')
+        expect(userStore.apiUrl).toEqual('http://utilesnca.vetorius.ovh:1337')
     })
 
     /*     it('should login correctly', async () => {
